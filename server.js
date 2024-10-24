@@ -7,6 +7,7 @@ import authRoutes from './routes/authRoute.js';
  import cors from 'cors'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js' 
+import { healthCheckController } from "./controllers/healthCheckController.js";
 
 // const session=require("express-session");
 // const passport=require("passport");
@@ -94,6 +95,8 @@ app.use(morgan('dev'))
 app.use('/api/v1/auth',authRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
+
+app.get("/health-check", healthCheckController)
 
 app.get('/', (req, res) => {
     res.send("<h1>Welcome to pantrypal</h1>");
